@@ -1,0 +1,88 @@
+<div class="header"
+    [ngClass]="{ 'header-trimmed': getHeaderClass() === 'header-trimmed', 'header-md-screen': getHeaderClass() === 'header-md-screen', 'full-header': isSmallScreen() }">
+    <mat-toolbar [ngClass]="{'sticky': isSticky, 'dark-background': isDarkTheme, 'light-background': !isDarkTheme}"
+        color="primary">
+        <button mat-icon-button class="menu-button" (click)="sidenav.toggle()" *ngIf="isScreenSmall">
+            <mat-icon [ngClass]="{'light-text': isDarkTheme, 'dark-text': !isDarkTheme }">menu</mat-icon>
+        </button>
+        <div class="menu-items">
+            <div class="search-container" *ngIf="!isScreenSmall">
+                <form class="form">
+                    <mat-form-field class="search-input">
+                        <input type="text" matInput placeholder="Search">
+                        <i class="fal fa-search search-icon" aria-hidden="true"></i>
+                    </mat-form-field>
+                </form>
+            </div>
+
+            <div></div>
+            <div *ngIf="isScreenSmall">
+                <div class="logo-text" [ngClass]="{'light-text': isDarkTheme, 'dark-text': !isDarkTheme }" @fadeInOut
+                    routerLink="/app/dashboard">Course Master.</div>
+            </div>
+            <div class="icons-container">
+                <!-- <mat-slide-toggle (change)="slideToggleChange($event)" *ngIf="!isScreenSmall"></mat-slide-toggle> -->
+                <i class="fal fa-moon-stars theme-icon" matRipple (click)="changeTheme('dark')"
+                    *ngIf="!isDarkTheme"></i>
+                <i class="fal fa-sun theme-icon-sun" matRipple (click)="changeTheme('light')" *ngIf="isDarkTheme"></i>
+
+                <div class="header-menu" *ngIf="!isScreenSmall">
+                    <nav class="menu-items">
+                        <a routerLink="/app/wishlist">My Wish List</a>
+                    </nav>
+                </div>
+
+                <button class="icon-btn" *ngIf="!isScreenSmall" [matMenuTriggerFor]="cartMenu">
+                    <i class="fal fa-shopping-cart header-icon" matBadge="{{cartItemCount}}"></i>
+                </button>
+                <div class="cart-menu">
+                    <mat-menu #cartMenu="matMenu">
+                        <div *ngIf="cartItems.length; else emptyCart">
+                            <div class="cart-items" *ngFor="let item of cartItems; let i = index">
+                                <h1 class="course-name">
+                                    {{ i + 1 }}. {{ item.courseName }} :
+                                </h1>
+                                <h1 class="price">
+                                    ₹{{ getActualPrice(item) }}
+                                </h1>
+                            </div>
+                            <div class="total-section">
+                                <h1 class="total">
+                                    Total: ₹ {{ getTotalCost().toFixed(2) | currency: ' ' }}
+                                </h1>
+                            </div>
+                            <button mat-flat-button class="checkout-btn" routerLink="/app/cart">GO TO
+                                CHECKOUT</button>
+                        </div>
+                        <ng-template #emptyCart>
+                            <p>Your cart is empty</p>
+                        </ng-template>
+                    </mat-menu>
+                </div>
+                <div class="avatar-container" [matMenuTriggerFor]="menu">
+                    <div class="avatar-icons-container">
+                        <!-- <mat-icon class="avatar">account_circle</mat-icon> -->
+                        <img src="/assets/images/avatar-10.svg" alt="avatar" class="avatar">
+                        <i class="fal fa-chevron-down chevron"></i>
+                    </div>
+                    <div class="sub-menu">
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item routerLink="/app/profile">Profile</button>
+                            <button mat-menu-item>Settings</button>
+                        </mat-menu>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </mat-toolbar>
+
+    <mat-drawer-container>
+        <mat-drawer #sidenav mode="over" [opened]="isScreenSmall && isSidenavOpen">
+            <app-mobile-sidenav></app-mobile-sidenav>
+        </mat-drawer>
+        <mat-drawer-content>
+            <app-body [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth"></app-body>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

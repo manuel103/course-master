@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="banner">
+        <h1 class="title-1">Discover Latest Courses</h1>
+        <h1 class="title-2">on Angular</h1>
+    </div>
+    <div class="courses">
+        <h1 class="title">
+            Courses
+        </h1>
+        <div class="search-section">
+            <mat-card class="search-card">
+                <div class="fields-section">
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Search</mat-label>
+                        <input matInput [(ngModel)]="searchTerm" (keyup)="applyFilter()">
+                    </mat-form-field>
+
+                    <div class="sort-buttons">
+                        <h1 class="title">
+                            Sort by price
+                        </h1>
+                        <button mat-flat-button matTooltip="Sort by Lowest Price" (click)="sortData('asc')">
+                            <i class="fal fa-sort-amount-down-alt"></i>
+                        </button>
+
+                        <button mat-flat-button matTooltip="Sort by Highest Price" (click)="sortData('desc')">
+                            <i class="fal fa-sort-amount-up-alt"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </mat-card>
+        </div>
+        <div class="courses-container">
+            <mat-card class="card" *ngFor="let course of paginatedData">
+                <mat-card-content>
+                    <img src="/assets/images/angular_banner.jpg" alt="banner">
+                    <h1 class="course-title">{{course.courseName}}</h1>
+                    <h1 class="course-author">{{course.author}}</h1>
+                    <div class="tags-section">
+                        <div class="tags-container" *ngFor="let tag of course.tags">
+                            <h1 class="tag">{{tag}}</h1>
+                        </div>
+                    </div>
+                    <div class="price-section">
+                        <div class="price-container">
+                            <h1 [ngClass]="+(course.discountPercentage | removeSymbols) > 0 ? 'strike-through' : '' "
+                                class="course-price">{{course.actualPrice}}</h1> &nbsp;&nbsp;
+                            <h1 *ngIf="+(course.discountPercentage | removeSymbols) > 0" class="course-price">
+                                ₹{{(+(course.actualPrice | removeSymbols) - +(course.actualPrice | removeSymbols) *
+                                +(course.discountPercentage | removeSymbols) / 100) | roundUp}}</h1>
+                        </div>
+                        <h1 *ngIf="+(course.discountPercentage | removeSymbols) > 0" class="discount">
+                            {{course.discountPercentage}} discount</h1>
+                    </div>
+                    <app-add-to-cart [course]="course" (onAddToCart)="handleAddToCart(course)"
+                        (onAddToWishlist)="handleAddToWishlist($event)"></app-add-to-cart>
+                    <div class="button-section">
+                        <button mat-raised-button [routerLink]="['/app/course-details', course.id]">
+                            <i class="fal fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <mat-paginator [length]="filteredData.length" [pageSize]="pageSize" [pageSizeOptions]="[4, 8, 12]"
+            (page)="onPageChange($event)">
+        </mat-paginator>
+    </div>
+</div>

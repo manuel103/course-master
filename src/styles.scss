@@ -1,0 +1,78 @@
+@use '@angular/material' as mat;
+@use './styles/palette' as palette;
+@import '@angular/material/theming';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@include mat.core();
+
+$app-primary: mat.define-palette(palette.$primary);
+$app-accent: mat.define-palette(palette.$dark-accent);
+$app-warn: mat.define-palette(palette.$warn);
+$app-test: mat.define-palette(palette.$primary, 700);
+
+$app-accent-dark: mat.define-palette(palette.$dark-accent);
+
+$app-theme: mat.define-light-theme((color: (primary: $app-primary,
+                accent: $app-accent,
+                warn: $app-warn,
+            ),
+            typography: mat.define-typography-config(),
+            density: 0,
+        ));
+
+$app-theme-dark: mat.define-dark-theme((color: (primary: $app-primary,
+                accent: $app-accent,
+                warn: $app-warn,
+            ),
+            typography: mat.define-typography-config(),
+            density: 0,
+        ));
+
+.dark-theme {
+    @include mat.all-component-colors($app-theme-dark);
+}
+
+.light-theme {
+    @include mat.all-component-colors($app-theme);
+}
+
+:root {
+    --dark-background: #424242;
+    --dark-text: #263238;
+    --light-text: #fff;
+
+    --text-color-0: #000000;
+    --text-color-1: #1D192B;
+    --text-color-2: #1D192B;
+    --text-color-3: #8F8F8F;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: .5rem;
+    background-color: #fff;
+    margin: 1.25rem 0 1.25rem 0;
+    box-shadow: 0 .25rem .5rem #e6edef;
+
+    .card-head {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #edf1f7;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .card-body {
+        padding: 1rem 1.5rem;
+    }
+}

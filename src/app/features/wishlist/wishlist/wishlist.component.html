@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="courses">
+        <h1 class="title">
+            My Wish List
+        </h1>
+        <div class="courses-container">
+            <mat-card class="card" *ngFor="let course of wishlist">
+                <mat-card-content>
+                    <img src="/assets/images/angular_banner.jpg" alt="banner">
+                    <h1 class="course-title">{{course.courseName}}</h1>
+                    <h1 class="course-author">{{course.author}}</h1>
+                    <div class="tags-section">
+                        <div class="tags-container" *ngFor="let tag of course.tags">
+                            <h1 class="tag">{{tag}}</h1>
+                        </div>
+                    </div>
+                    <div class="price-section">
+                        <div class="price-container">
+                            <h1 [ngClass]="+(course.discountPercentage | removeSymbols) > 0 ? 'strike-through' : '' "
+                                class="course-price">{{course.actualPrice}}</h1> &nbsp;&nbsp;
+                            <h1 *ngIf="+(course.discountPercentage | removeSymbols) > 0" class="course-price">
+                                ₹{{(+(course.actualPrice | removeSymbols) - +(course.actualPrice | removeSymbols) *
+                                +(course.discountPercentage | removeSymbols) / 100) | roundUp}}</h1>
+                        </div>
+                        <h1 *ngIf="+(course.discountPercentage | removeSymbols) > 0" class="discount">
+                            {{course.discountPercentage}} discount</h1>
+                    </div>
+                    <div class="add-to-cart-section">
+                        <i class="fal fa-trash-undo" matTooltip="Remove from wishlist"
+                            (click)="removeFromWishlist(course.id)"></i>
+                        <i class="fal fa-cart-plus" matTooltip="Add to cart" (click)="addToCart(course)"></i>
+                    </div>
+                    <div class="button-section">
+                        <button mat-raised-button routerLink="/app/dashboard/course-details">
+                            <i class="fal fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card *ngIf="wishlist.length <= 0" class="empty-card">
+                <div class="empty-container">
+                    <h1 class="title">
+                        Your wish list is currently empty!
+                    </h1>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

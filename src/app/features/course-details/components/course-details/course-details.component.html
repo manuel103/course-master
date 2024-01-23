@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="banner">
+        <h1 class="title-1">Discover Latest Courses</h1>
+        <h1 class="title-2">on React</h1>
+    </div>
+    <div class="course-details">
+        <h1 class="bread-crumb"><a routerLink="/app/dashboard">All Courses</a> > {{ course?.courseName }}</h1>
+    </div>
+    <div class="course-content">
+        <mat-card class="card">
+            <mat-card-content>
+                <h1 class="course-title">{{course.courseName}}</h1>
+                <h1 class="course-author">By {{course.author}}</h1>
+                <div class="tags-section">
+                    <div class="tags-container" *ngFor="let tag of course.tags">
+                        <h1 class="tag">{{tag}}</h1>
+                    </div>
+                </div>
+                <div class="description-section">
+                    <p class="description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Morbi tristique senectus et netus et malesuada. Ultrices gravida
+                        dictum fusce ut placerat orci. Sed vulputate mi sit amet mauris commodo quis imperdiet massa.
+                        Arcu risus quis varius quam quisque id diam. <br> <br>
+
+                        Blandit libero volutpat sed cras ornare arcu dui
+                        vivamus. Morbi blandit cursus risus at ultrices mi. Ultrices vitae auctor eu augue ut lectus
+                        arcu bibendum. Eu ultrices vitae auctor eu augue ut lectus arcu. In massa tempor nec feugiat
+                        nisl pretium fusce id velit.
+                    </p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="card">
+            <mat-card-content>
+                <iframe class="video-frame" [src]="videoUrl" height="315" frameborder="0" allowfullscreen></iframe>
+                <div class="price-section">
+                    <div class="price-container">
+                        <h1 [ngClass]="+(course.discountPercentage | removeSymbols) > 0 ? 'strike-through' : '' "
+                            class="course-price">{{course.actualPrice}}</h1> &nbsp;&nbsp;
+                        <h1 *ngIf="+(course.discountPercentage | removeSymbols) > 0" class="course-price">
+                            ₹{{(+(course.actualPrice | removeSymbols) - +(course.actualPrice | removeSymbols) *
+                            +(course.discountPercentage | removeSymbols) / 100) | roundUp}}</h1>
+                    </div>
+                    <h1 *ngIf="+(course.discountPercentage | removeSymbols) > 0" class="discount">
+                        {{course.discountPercentage}} discount</h1>
+                </div>
+                <app-add-to-cart [course]="course" (onAddToCart)="handleAddToCart(course)"
+                    (onAddToWishlist)="handleAddToWishlist($event)"></app-add-to-cart>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

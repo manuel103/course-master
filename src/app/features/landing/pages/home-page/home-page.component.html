@@ -1,0 +1,88 @@
+<div class="main">
+    <div class="parent-container">
+        <div class="content-container">
+            <div class="left-item-container">
+                <h1 class="title">Make <i>your</i></h1>
+                <h1 class="title">money</h1>
+                <h1 class="title"><strong>work for you.</strong></h1>
+                <p class="description">
+                    Achieve this through our brilliantly simple ways of building your wealth through savings,
+                    investments, buying of treasury bill or bonds. By utilising our platform, get zero charges in
+                    transaction fees and the convenience to transact wherever you go. Sign up today and get up
+                    to <strong>50%</strong> signing bonus on your initial investment.
+                </p>
+                <div class="buttons-section">
+                    <button mat-raised-button class="fill-btn">Get Started</button>
+                </div>
+            </div>
+            <div class="right-item-container">
+                <div class="phone-container">
+                    <div class="inner-phone-container">
+                        <img src="/assets/images/landing-img-3.png" alt="phone" class="phone-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="partners-container">
+            <div class="partners">
+                <div class="partner">
+                    <h1 class="partner-name">Ayola</h1>
+                    <h1 class="partner-description">The best security guarantors in asset financing.</h1>
+                </div>
+                <div class="partner">
+                    <h1 class="partner-name">Central Bank</h1>
+                    <h1 class="partner-description">The country's financial regulatory authority.</h1>
+                </div>
+            </div>
+            <div class="ratings">
+                <div class="rating">
+                    <h1 class="rating-title">4.9 <i class="fal fa-star star"></i></h1>
+                    <h1 class="rating-description">Apple App Store</h1>
+                </div>
+                <div class="rating">
+                    <h1 class="rating-title">5.0 <i class="fal fa-star"></i></h1>
+                    <h1 class="rating-description">Google Play Store</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="description-sections-container" *ngFor="let content of sectionContent"
+            [ngStyle]="{'direction': content.direction}">
+            <div class="left-section"
+                [ngStyle]="{'background-image': 'url(' + content.backgroundImageUrl + ')', 'direction': content.direction}">
+                <p class="name">account</p>
+                <div class="phone-container">
+                    <div class="inner-phone-container">
+                        <img src="{{content.phoneImageUrl}}" alt="phone" class="phone-img">
+                    </div>
+                </div>
+            </div>
+            <div class="right-section">
+                <h1 class="title">{{content.title}}</h1>
+                <h1 class="title"><strong>{{content.cta}}</strong></h1>
+                <p class="description">
+                    <strong>{{content.emphasizeddescription}}</strong> <br> {{content.description}}
+                </p>
+                <div class="features-container" *ngFor="let feature of content.features">
+                    <div class="left" *ngFor="let item of feature.left">
+                        <div class="feature">
+                            <i class="{{item.icon}}"></i>
+                            <h1 class="feature-description">{{item.title}}</h1>
+                        </div>
+                    </div>
+                    <div class="right" *ngFor="let item of feature.right">
+                        <div class="feature">
+                            <i class="{{item.icon}}"></i>
+                            <h1 class="feature-description">{{item.title}}</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons-section">
+                    <button mat-raised-button class="fill-btn section-btn">{{content.buttonText}}</button>
+                </div>
+                <p class="description learn-more">{{content.finalCta}}</p>
+            </div>
+        </div>
+    </div>
+</div>

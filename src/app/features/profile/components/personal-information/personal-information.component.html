@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="title-container">
+        <h1 class="title">Personal Information</h1>
+    </div>
+    <div class="avatar-container">
+        <div class="wrapper">
+            <div class="avatar-details-container">
+                <mat-icon class="avatar">account_circle</mat-icon>
+                <div class="btn-section">
+                    <button mat-raised-button class="fill-btn">Change</button>
+                    <button mat-raised-button class="transparent-btn">Remove</button>
+                </div>
+                <div class="spacer"></div>
+            </div>
+        </div>
+    </div>
+    <div class="details-container">
+        <div class="left">
+            <form class="input-form">
+                <label class="field-label">First name</label>
+                <mat-form-field class="input-field" appearance="outline">
+                    <input type="text" matInput value="Phrancis">
+                </mat-form-field>
+
+                <label class="field-label">Email</label>
+                <mat-form-field class="input-field" appearance="outline">
+                    <input type="email" matInput value="alvinp@coursemaster.com">
+                </mat-form-field>
+
+                <label class="field-label">Location</label>
+                <mat-form-field class="input-field" appearance="outline">
+                    <mat-select>
+                        <mat-option *ngFor="let country of countries" [value]="country.name"> <span
+                                class="fi fi-{{country.code | lowercase}}"> </span> &nbsp;
+                            {{country.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+        </div>
+        <div class="right">
+            <form class="input-form">
+
+                <label class="field-label">Last name</label>
+                <mat-form-field class="input-field" appearance="outline">
+                    <input type="text" matInput value="Alvin">
+                </mat-form-field>
+
+                <label class="field-label">Phone number</label>
+                <mat-form-field class="input-field" appearance="outline">
+                    <input type="number" disabled matInput value="0299789018">
+                </mat-form-field>
+
+                <label class="field-label">Tax PIN</label>
+                <mat-form-field class="input-field" appearance="outline">
+                    <input type="text" disabled matInput value="A230OP896686">
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+    <div class="buttons-section">
+        <button mat-raised-button class="transparent-btn">Cancel</button>
+        <button mat-raised-button class="fill-btn">Update</button>
+    </div>
+</div>

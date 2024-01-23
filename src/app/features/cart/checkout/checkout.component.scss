@@ -1,0 +1,171 @@
+.container {
+    .courses {
+        margin-top: 5%;
+
+        .fields-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .items-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 2rem;
+
+            @media (min-width: 768px) {
+                grid-template-columns: 3fr 1fr;
+            }
+
+            .cart-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+                gap: 2rem;
+
+                .card {
+                    box-shadow: none;
+                    border-radius: 1.2rem;
+                    max-width: 20rem;
+
+                    .course-title,
+                    .course-price {
+                        font-size: 1rem;
+                        line-height: 1.5rem;
+                    }
+
+                    .discount {
+                        font-size: 0.8rem;
+                        line-height: 1.5rem;
+                        color: #34e6b1;
+                    }
+
+                    .price-section {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        .price-container {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                        }
+
+                        .strike-through {
+                            text-decoration: line-through;
+                        }
+                    }
+
+                    .course-author {
+                        font-size: 0.8rem;
+                        font-weight: 500;
+                        line-height: 1.5rem;
+                    }
+
+                    img {
+                        width: 100%;
+                    }
+
+                    .tags-section {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+
+                        .tags-container {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #00000030;
+                            width: 5rem;
+                            border-radius: 4rem;
+                            padding: 0.3rem;
+                            margin-top: 1rem;
+                            margin-bottom: 1rem;
+
+                            .tag {
+                                margin: 0;
+                                font-size: 0.5rem;
+                                font-weight: 600;
+                                color: #fff;
+                            }
+                        }
+                    }
+
+                    .button-section {
+                        margin-top: 2rem;
+
+                        button {
+                            width: 100%;
+                            background-color: #4456FF;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .empty-card {
+                    box-shadow: none;
+                    border-radius: 1.2rem;
+                    margin-top: 1rem;
+
+                    .empty-container {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 1rem;
+                    }
+                }
+
+                .action-btn-section {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-top: 1rem;
+
+                    i {
+                        cursor: pointer;
+                    }
+
+                    .yellow-star {
+                        color: #e4e40d;
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            .price-card {
+                .cart-total {
+                    font-size: larger;
+                }
+
+                box-shadow: none;
+                border-radius: 1.2rem;
+                padding: 2rem;
+
+                .amount {
+                    font-size: medium;
+                    margin-top: 2rem;
+                }
+
+                .savings-amount {
+                    font-size: 0.8rem;
+                    margin-top: 2rem;
+                }
+
+                .btn-section {
+                    margin-top: 2rem;
+
+                    .checkout-btn {
+                        width: 100%;
+                        background-color: #4153F5;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+    }
+}

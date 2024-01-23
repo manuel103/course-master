@@ -1,0 +1,110 @@
+.container {
+    .banner {
+        width: 100%;
+        height: 5rem;
+        background: linear-gradient(135deg, #4456FF 80%, #fff 20%);
+        color: #fff;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 1rem;
+
+        .title-1 {
+            font-size: medium;
+        }
+
+        .title-2 {
+            font-size: large;
+        }
+    }
+
+    .course-details {
+        margin-top: 2rem;
+
+        .bread-crumb {
+            font-size: small;
+        }
+    }
+
+    .course-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        @media (min-width: 768px) {
+            grid-template-columns: 1fr 2fr;
+        }
+
+        .card {
+            box-shadow: none;
+            border-radius: 1.2rem;
+
+            .course-title,
+            .course-price {
+                font-size: 1rem;
+                line-height: 1.5rem;
+            }
+
+            .discount {
+                font-size: 0.8rem;
+                line-height: 1.5rem;
+                color: #34e6b1;
+            }
+
+            .price-section {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 1rem;
+
+                .price-container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+
+                .strike-through {
+                    text-decoration: line-through;
+                }
+            }
+
+            .course-author,
+            .description {
+                font-size: 0.8rem;
+                font-weight: 500;
+                line-height: 1.5rem;
+            }
+
+            .tags-section {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+
+                .tags-container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #00000030;
+                    width: 5rem;
+                    border-radius: 4rem;
+                    padding: 0.3rem;
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+
+                    .tag {
+                        margin: 0;
+                        font-size: 0.5rem;
+                        font-weight: 600;
+                        color: #fff;
+                    }
+                }
+            }
+
+            .video-frame {
+                width: 100%;
+            }
+        }
+    }
+}

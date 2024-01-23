@@ -1,0 +1,25 @@
+<div class="sidenav"
+    [ngClass]="{'sidenav-collapsed': isCollapsed(), 'hide-sidenav': isSmallScreen(), 'dark-background': isDarkTheme, 'light-background': !isDarkTheme }">
+    <div class="logo-container">
+        <button class="logo" (click)="toggleCollapse()">CM</button>
+        <div [ngClass]="{'light-text': isDarkTheme, 'dark-text': !isDarkTheme }" class="logo-text" @fadeInOut
+            *ngIf="collapsed" routerLink="/app/dashboard">Course Master.</div>
+        <button [ngClass]="{'light-text': isDarkTheme, 'dark-text': !isDarkTheme }" class="btn-close" *ngIf="collapsed"
+            (click)="closeSidenav()">
+            <i class="fal fa-align-left"></i>
+        </button>
+    </div>
+    <ul class="sidenav-nav">
+        <li class="sidenav-nav-item" *ngFor="let data of navData">
+            <a class="sidenav-nav-link" [routerLink]="[data.routeLink]" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">
+                <i [ngClass]="{'light-text': isDarkTheme, 'dark-text': !isDarkTheme }" class="sidenav-link-icon"
+                    [class]="data.icon"></i>
+                <span [ngClass]="{'light-text': isDarkTheme, 'dark-text': !isDarkTheme }" class="sidenav-link-text"
+                    @fadeInOut *ngIf="collapsed">
+                    {{data.label}}
+                </span>
+            </a>
+        </li>
+    </ul>
+</div>

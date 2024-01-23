@@ -1,0 +1,38 @@
+<div class="header"
+    [ngClass]="{ 'header-trimmed': getHeaderClass() === 'header-trimmed', 'header-md-screen': getHeaderClass() === 'header-md-screen', 'full-header': isSmallScreen() }">
+    <mat-toolbar [ngClass]="{'sticky': isSticky, 'dark-background': isDarkTheme, 'light-background': !isDarkTheme}">
+        <button mat-icon-button class="menu-button" (click)="sidenav.toggle()" *ngIf="isScreenSmall">
+            <mat-icon [ngClass]="{'light-text': isDarkTheme, 'dark-text': !isDarkTheme }">menu</mat-icon>
+        </button>
+        <div class="menu-items">
+
+            <div>
+                <div class="logo-text" [ngClass]="{'light-text': isDarkTheme, 'dark-text': !isDarkTheme }" @fadeInOut
+                    routerLink="/home">Course Master.</div>
+            </div>
+
+            <div class="menu" *ngIf="!isScreenSmall">
+                <nav class="menu-items">
+                    <a href="#">Courses</a>
+                    <a href="#">My Wish List</a>
+                    <a href="#">Cart</a>
+                </nav>
+            </div>
+
+            <div class="buttons-section">
+                <button mat-raised-button class="transparent-btn" *ngIf="!isScreenSmall"
+                    routerLink="/app/dashboard">Login</button>
+                <button mat-raised-button class="fill-btn">Get Started</button>
+            </div>
+        </div>
+    </mat-toolbar>
+
+    <mat-drawer-container>
+        <mat-drawer #sidenav mode="over" [opened]="isScreenSmall && isSidenavOpen">
+            <app-landing-page-side-nav></app-landing-page-side-nav>
+        </mat-drawer>
+        <mat-drawer-content class="landing-content-section">
+            <router-outlet></router-outlet>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

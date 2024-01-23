@@ -1,0 +1,164 @@
+.container {
+    .banner {
+        width: 100%;
+        height: 5rem;
+        background: linear-gradient(135deg, #3494e6 80%, #fff 20%);
+        color: #fff;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 1rem;
+
+        .title-1 {
+            font-size: medium;
+        }
+
+        .title-2 {
+            font-size: large;
+        }
+    }
+
+    .courses {
+        margin-top: 5%;
+
+        .fields-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .sort-buttons {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .title {
+                    font-size: 1em;
+                    margin-right: 5px;
+                }
+
+                button:hover {
+                    background-color: #4456FF;
+                    color: #fff;
+                }
+            }
+        }
+
+        .title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+            gap: 2rem;
+
+            .card {
+                box-shadow: none;
+                border-radius: 1.2rem;
+
+                .course-title,
+                .course-price {
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+                }
+
+                .discount {
+                    font-size: 0.8rem;
+                    line-height: 1.5rem;
+                    color: #34e6b1;
+                }
+
+                .price-section {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .price-container {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                    }
+
+                    .strike-through {
+                        text-decoration: line-through;
+                    }
+                }
+
+                .course-author {
+                    font-size: 0.8rem;
+                    font-weight: 500;
+                    line-height: 1.5rem;
+                }
+
+                img {
+                    width: 100%;
+                }
+
+                .tags-section {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+
+                    .tags-container {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #00000030;
+                        width: 5rem;
+                        border-radius: 4rem;
+                        padding: 0.3rem;
+                        margin-top: 1rem;
+                        margin-bottom: 1rem;
+
+                        .tag {
+                            margin: 0;
+                            font-size: 0.5rem;
+                            font-weight: 600;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .button-section {
+                    margin-top: 2rem;
+
+                    button {
+                        width: 100%;
+                        background-color: #4456FF;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .search-card {
+            box-shadow: none;
+            border-radius: 1.2rem;
+            padding: 0.9rem;
+            margin-top: 1rem;
+        }
+    }
+
+    .form-field {
+        height: 3rem;
+        width: 15rem;
+    }
+
+    ::ng-deep.mat-mdc-form-field-subscript-wrapper {
+        display: none;
+    }
+
+    ::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .banner {
+        height: 3rem;
+    }
+}

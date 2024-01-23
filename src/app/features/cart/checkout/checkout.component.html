@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="courses">
+        <h1 class="title">
+            My Cart
+        </h1>
+        <div class="items-container">
+            <div class="cart-container">
+                <mat-card class="card" *ngFor="let course of cartItems">
+                    <mat-card-content>
+                        <img src="/assets/images/angular_banner.jpg" alt="banner">
+                        <h1 class="course-title">{{course.courseName}}</h1>
+                        <h1 class="course-author">{{course.author}}</h1>
+                        <div class="tags-section">
+                            <div class="tags-container" *ngFor="let tag of course.tags">
+                                <h1 class="tag">{{tag}}</h1>
+                            </div>
+                        </div>
+                        <div class="price-section">
+                            <div class="price-container">
+                                <h1 [ngClass]="+(course.discountPercentage | removeSymbols) > 0 ? 'strike-through' : '' "
+                                    class="course-price">{{course.actualPrice}}</h1> &nbsp;&nbsp;
+                                <h1 *ngIf="+(course.discountPercentage | removeSymbols) > 0" class="course-price">
+                                    ₹{{(+(course.actualPrice | removeSymbols) - +(course.actualPrice | removeSymbols) *
+                                    +(course.discountPercentage | removeSymbols) / 100) | roundUp}}</h1>
+                            </div>
+                            <h1 *ngIf="+(course.discountPercentage | removeSymbols) > 0" class="discount">
+                                {{course.discountPercentage}} discount</h1>
+                        </div>
+                        <div class="action-btn-section">
+                            <i class="fal fa-star" matTooltip="Move to wishlist" (click)="moveToWishlist(course)"></i>
+
+                            <i class="fal fa-trash-alt" matTooltip="Remove from cart"
+                                (click)="deleteItem(course.id)"></i>
+                        </div>
+                        <div class="button-section">
+                            <button mat-raised-button routerLink="/app/dashboard/course-details">
+                                <i class="fal fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+
+                <mat-card *ngIf="cartItems.length <= 0" class="empty-card">
+                    <div class="empty-container">
+                        <h1 class="title">
+                            Your cart is empty!
+                        </h1>
+                    </div>
+                </mat-card>
+            </div>
+            <div class="price" *ngIf="cartItems.length > 0">
+                <mat-card class="price-card">
+                    <h1 class="title">Cart Total</h1>
+                    <div class="total-cost">
+                        <h1 class="savings-amount">
+                            Total Savings: ₹ {{ getTotalSavings().toFixed(2) | currency: ' ' }}
+                        </h1>
+                    </div>
+                    <div class="total-cost">
+                        <h1 class="amount">
+                            Total: ₹ {{ getTotalCost().toFixed(2) | currency: ' ' }}
+                        </h1>
+                    </div>
+                    <div class="btn-section">
+                        <button mat-flat-button class="checkout-btn" (click)="placeOrderDialog()">Checkout</button>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

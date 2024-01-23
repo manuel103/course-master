@@ -1,0 +1,26 @@
+<div class="container">
+    <h1 class="title">Account Settings</h1>
+    <div class="tabs-container">
+        <mat-card class="card">
+            <mat-card-content>
+                <div class="tabs">
+                    <div *ngFor="let menu of menuItems" class="tab-item" matRipple (click)="selectTab(menu.index)"
+                        [ngClass]="{ 'active': selectedTab === menu.index }">{{ menu.label }}
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="card">
+            <mat-card-content>
+                <div class="content">
+                    <div *ngIf="selectedTab === 1" class="content-item">
+                        <app-personal-information></app-personal-information>
+                    </div>
+                    <div *ngIf="selectedTab === 2" class="content-item">
+                        <app-security></app-security>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

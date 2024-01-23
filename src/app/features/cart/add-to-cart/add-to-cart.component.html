@@ -1,0 +1,5 @@
+<div class="cart-section">
+    <i class="fal fa-star" matTooltip="Add to wishlist" (click)="toggleWishlist()"
+        [ngClass]="{'yellow-star': isWishlisted}"></i>
+    <i class="fal fa-cart-plus" matTooltip="Add to cart" (click)="addToCart()"></i>
+</div>

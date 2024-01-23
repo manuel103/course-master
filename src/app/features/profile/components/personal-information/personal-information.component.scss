@@ -1,0 +1,85 @@
+@import "src/styles/shared";
+@include btns;
+@include forms;
+
+.container {
+    .title-container {
+        .title {
+            font-weight: 500;
+            font-size: 1rem;
+        }
+    }
+
+    .avatar-container {
+        .wrapper {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            flex-direction: column;
+
+            @media (min-width: 768px) {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .avatar {
+                font-size: 7rem;
+                width: 4.5rem;
+                height: 4.5rem;
+                border-radius: 50%;
+                border: 2px solid #263238;
+                background-color: #263238;
+                color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .avatar-details-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+
+                .spacer {
+                    width: 20%;
+                }
+
+                // @media (min-width: 768px) {
+                //     width: 12rem;
+                // }
+            }
+
+            .btn-section {
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+            }
+        }
+    }
+
+
+    .buttons-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        width: 100%;
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+            width: 40%;
+        }
+    }
+
+    .details-container {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: 1fr;
+        padding-top: 2rem;
+
+        @media (min-width: 768px) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}

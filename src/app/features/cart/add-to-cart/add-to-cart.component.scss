@@ -1,0 +1,15 @@
+.cart-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+
+    i {
+        cursor: pointer;
+    }
+
+    .yellow-star {
+        color: #e4e40d;
+        font-weight: bold;
+    }
+}

@@ -18,7 +18,6 @@ import { AuthenticatedLayoutComponent } from './layouts/authenticated-layout/aut
 import { LandingPageHeaderComponent } from './components/landing-page-header/landing-page-header.component';
 import { UnauthenticatedLayoutComponent } from './layouts/unauthenticated-layout/unauthenticated-layout.component';
 import { LandingPageSideNavComponent } from './components/landing-page-side-nav/landing-page-side-nav.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { MatRippleModule } from '@angular/material/core';
 import { MatBadgeModule } from '@angular/material/badge';
 
@@ -31,8 +30,7 @@ import { MatBadgeModule } from '@angular/material/badge';
         AuthenticatedLayoutComponent,
         UnauthenticatedLayoutComponent,
         LandingPageHeaderComponent,
-        LandingPageSideNavComponent,
-        FooterComponent
+        LandingPageSideNavComponent
     ],
     imports: [
         CommonModule,

@@ -11,11 +11,17 @@ import { MatSelectModule } from '@angular/material/select';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileLayoutComponent } from './components/profile-layout/profile-layout.component';
 import { PersonalInformationComponent } from './components/personal-information/personal-information.component';
-import { SecurityComponent } from './components/security/security.component';
 import { SharedModule } from '@app/shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ProfileUpdateComponent } from './components/profile-update/profile-update.component';
 
 @NgModule({
-    declarations: [ProfileLayoutComponent, PersonalInformationComponent, SecurityComponent],
+    declarations: [
+        ProfileLayoutComponent,
+        PersonalInformationComponent, ProfileUpdateComponent
+    ],
     imports: [
         ProfileRoutingModule,
         MatTabsModule,
@@ -26,7 +32,10 @@ import { SharedModule } from '@app/shared/shared.module';
         MatFormFieldModule,
         MatInputModule,
         MatSelectModule,
+        MatDialogModule,
         SharedModule,
+        TextFieldModule,
+        ReactiveFormsModule,
         CommonModule
     ],
     exports: []

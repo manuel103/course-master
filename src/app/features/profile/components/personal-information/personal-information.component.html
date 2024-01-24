@@ -4,61 +4,166 @@
     </div>
     <div class="avatar-container">
         <div class="wrapper">
-            <div class="avatar-details-container">
+            <!-- <div class="avatar-details-container">
                 <mat-icon class="avatar">account_circle</mat-icon>
                 <div class="btn-section">
                     <button mat-raised-button class="fill-btn">Change</button>
                     <button mat-raised-button class="transparent-btn">Remove</button>
                 </div>
                 <div class="spacer"></div>
+            </div> -->
+            <div class="avatar-container">
+                <div class="avatar-icons-container">
+                    <img src="/assets/images/avatar-10.svg" alt="avatar" class="avatar">
+                    <div class="btn-section">
+                        <button mat-raised-button class="fill-btn">Change</button>
+                        <button mat-raised-button class="transparent-btn">Remove</button>
+                    </div>
+                    <div class="spacer"></div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="details-container">
-        <div class="left">
-            <form class="input-form">
-                <label class="field-label">First name</label>
-                <mat-form-field class="input-field" appearance="outline">
-                    <input type="text" matInput value="Phrancis">
-                </mat-form-field>
+    <div class="form-container">
+        <form class="input-form" [formGroup]="personalInformationForm">
+            <div>
+                <div class="details-container">
+                    <div>
+                        <label class="field-label">Display name</label>
+                        <mat-form-field class="input-field" appearance="outline">
+                            <input type="text" matInput value="Alvin" formControlName="displayName">
+                            <mat-error class="error-msg"
+                                *ngIf="personalInformationForm?.get('displayName')?.hasError('required')">
+                                Display name is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
 
-                <label class="field-label">Email</label>
-                <mat-form-field class="input-field" appearance="outline">
-                    <input type="email" matInput value="alvinp@coursemaster.com">
-                </mat-form-field>
+                <div class="details-container">
+                    <div>
+                        <label class="field-label">First name</label>
+                        <mat-form-field class="input-field" appearance="outline">
+                            <input type="text" matInput value="John" formControlName="firstName">
+                            <mat-error class="error-msg"
+                                *ngIf="personalInformationForm?.get('firstName')?.hasError('required')">
+                                First name is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <label class="field-label">Last name</label>
+                        <mat-form-field class="input-field" appearance="outline">
+                            <input type="text" matInput value="Alvin" formControlName="lastName">
+                            <mat-error class="error-msg"
+                                *ngIf="personalInformationForm?.get('lastName')?.hasError('required')">
+                                Last name is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
 
-                <label class="field-label">Location</label>
-                <mat-form-field class="input-field" appearance="outline">
-                    <mat-select>
-                        <mat-option *ngFor="let country of countries" [value]="country.name"> <span
-                                class="fi fi-{{country.code | lowercase}}"> </span> &nbsp;
-                            {{country.name}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </form>
-        </div>
-        <div class="right">
-            <form class="input-form">
+                <div class="details-container">
+                    <div>
+                        <label class="field-label">About yourself</label>
+                        <mat-form-field appearance="outline" class="input-field">
+                            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"
+                                formControlName="aboutYourself"></textarea>
+                            <mat-error class="error-msg"
+                                *ngIf="personalInformationForm?.get('aboutYourself')?.hasError('maxlength') && !personalInformationForm?.get('aboutYourself')?.hasError('required')">
+                                The <strong>maximum</strong> allowed characters is 100
+                            </mat-error>
+                            <mat-error class="error-msg"
+                                *ngIf="personalInformationForm?.get('aboutYourself')?.hasError('required') && !personalInformationForm?.get('aboutYourself')?.hasError('maxlength')">
+                                About yourself is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <label class="field-label">Your area of interest</label>
+                        <mat-form-field class="input-field" appearance="outline">
+                            <mat-select multiple formControlName="areaOfInterest">
+                                <mat-option value="programming">Programming</mat-option>
+                                <mat-option value="writing">Writing</mat-option>
+                                <mat-option value="networking">Networking</mat-option>
+                                <mat-option value="machine learning">Machine Learning</mat-option>
+                            </mat-select>
+                            <mat-error class="error-msg"
+                                *ngIf="personalInformationForm?.get('areaOfInterest')?.hasError('required')">
+                                Area of interest is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
 
-                <label class="field-label">Last name</label>
-                <mat-form-field class="input-field" appearance="outline">
-                    <input type="text" matInput value="Alvin">
-                </mat-form-field>
+                <div class="details-container">
+                    <div>
+                        <label class="field-label">Are you a student or a professional?</label>
+                        <mat-form-field class="input-field" appearance="outline">
+                            <mat-select formControlName="studentOrProfessional">
+                                <mat-option value="student">Student</mat-option>
+                                <mat-option value="professional">Professional</mat-option>
+                            </mat-select>
+                            <mat-error class="error-msg"
+                                *ngIf="personalInformationForm?.get('studentOrProfessional')?.hasError('required')">
+                                This field is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div *ngIf="personalInformationForm.get('studentOrProfessional')?.value === 'professional' ">
+                        <label class="field-label">Experience</label>
+                        <mat-form-field class="input-field" appearance="outline">
+                            <mat-select formControlName="experience">
+                                <mat-option value="0-5">0-5</mat-option>
+                                <mat-option value="5-10">5-10</mat-option>
+                                <mat-option value="10 & above">10 & above</mat-option>
+                            </mat-select>
+                            <mat-error class="error-msg"
+                                *ngIf="personalInformationForm?.get('studentOrProfessional')?.hasError('required')">
+                                Experience is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
 
-                <label class="field-label">Phone number</label>
-                <mat-form-field class="input-field" appearance="outline">
-                    <input type="number" disabled matInput value="0299789018">
-                </mat-form-field>
-
-                <label class="field-label">Tax PIN</label>
-                <mat-form-field class="input-field" appearance="outline">
-                    <input type="text" disabled matInput value="A230OP896686">
-                </mat-form-field>
-            </form>
-        </div>
-    </div>
-    <div class="buttons-section">
-        <button mat-raised-button class="transparent-btn">Cancel</button>
-        <button mat-raised-button class="fill-btn">Update</button>
+                <div class="details-container"
+                    *ngIf="personalInformationForm.get('studentOrProfessional')?.value === 'professional' ">
+                    <div>
+                        <label class="field-label">Expertise</label>
+                        <mat-form-field class="input-field" appearance="outline">
+                            <mat-select formControlName="expertise">
+                                <mat-option value="frontend">Frontend</mat-option>
+                                <mat-option value="backend">Backend</mat-option>
+                            </mat-select>
+                            <mat-error class="error-msg"
+                                *ngIf="personalInformationForm?.get('expertise')?.hasError('required')">
+                                Area of expertise is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <label class="field-label">Your role</label>
+                        <mat-form-field appearance="outline" class="input-field">
+                            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" formControlName="role"></textarea>
+                            <mat-error class="error-msg"
+                                *ngIf="personalInformationForm?.get('role')?.hasError('required') && !personalInformationForm?.get('role')?.hasError('maxlength')">
+                                Your role is <strong>required</strong>
+                            </mat-error>
+                            <mat-error class="error-msg"
+                                *ngIf="personalInformationForm?.get('role')?.hasError('maxlength') && !personalInformationForm?.get('role')?.hasError('required')">
+                                The <strong>maximum</strong> allowed characters is 200
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons-section">
+                <button mat-raised-button class="fill-btn" (click)="submit()"
+                    [disabled]="!personalInformationForm.valid"
+                    [ngClass]="!personalInformationForm.valid ? 'disabled-btn' : '' ">Save</button>
+            </div>
+        </form>
     </div>
 </div>

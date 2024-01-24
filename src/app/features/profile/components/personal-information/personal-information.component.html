@@ -4,20 +4,14 @@
     </div>
     <div class="avatar-container">
         <div class="wrapper">
-            <!-- <div class="avatar-details-container">
-                <mat-icon class="avatar">account_circle</mat-icon>
-                <div class="btn-section">
-                    <button mat-raised-button class="fill-btn">Change</button>
-                    <button mat-raised-button class="transparent-btn">Remove</button>
-                </div>
-                <div class="spacer"></div>
-            </div> -->
             <div class="avatar-container">
                 <div class="avatar-icons-container">
                     <img src="/assets/images/avatar-10.svg" alt="avatar" class="avatar">
                     <div class="btn-section">
-                        <button mat-raised-button class="fill-btn">Change</button>
-                        <button mat-raised-button class="transparent-btn">Remove</button>
+                        <button mat-raised-button class="fill-btn">
+                            <label for="fileUpload">Change</label>
+                        </button>
+                        <input type="file" id="fileUpload" style="display: none" />
                     </div>
                     <div class="spacer"></div>
                 </div>

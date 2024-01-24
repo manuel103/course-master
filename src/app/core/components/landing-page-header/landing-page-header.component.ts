@@ -5,6 +5,7 @@ import { fadeInOut } from '@app/core/utils/animations';
 import { DrawerService } from '@app/core/services/drawer.service';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ThemeService } from '@app/core/services/theme.service';
+import { AuthService } from '@app/core/services/auth.service';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -17,7 +18,7 @@ interface SideNavToggle {
   styleUrls: ['./landing-page-header.component.scss'],
   animations: [fadeInOut]
 })
-export class LandingPageHeaderComponent {
+export class LandingPageHeaderComponent implements OnInit {
   @Input() collapsed = false;
   @Input() screenWidth = 0;
   isDarkTheme = false;
@@ -31,6 +32,7 @@ export class LandingPageHeaderComponent {
   showFiller = false;
   isSticky: boolean = false;
   isSideNavCollapsed = false;
+  isLoggedIn: boolean = false;
 
   @HostBinding('class') className = '';
 
@@ -39,7 +41,8 @@ export class LandingPageHeaderComponent {
     private drawerService: DrawerService,
     private renderer: Renderer2,
     private el: ElementRef,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -60,6 +63,9 @@ export class LandingPageHeaderComponent {
     });
 
     this.themeService.setTheme(this.themeService.getTheme());
+
+    // Get logged in state
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   slideToggleChange(event: MatSlideToggleChange) {

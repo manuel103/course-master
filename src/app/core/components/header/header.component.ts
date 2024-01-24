@@ -6,6 +6,7 @@ import { DrawerService } from '@app/core/services/drawer.service';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ThemeService } from '@app/core/services/theme.service';
 import { CartService } from '@app/shared/services/cart.service';
+import { AuthService } from '@app/core/services/auth.service';
 interface SideNavToggle {
   screenWidth: number;
   collapsed: boolean;
@@ -42,7 +43,8 @@ export class HeaderComponent implements OnInit {
     private renderer: Renderer2,
     private el: ElementRef,
     private themeService: ThemeService,
-    private cartService: CartService
+    private cartService: CartService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -138,5 +140,9 @@ export class HeaderComponent implements OnInit {
 
   getTotalCost(): number {
     return this.cartItems.reduce((total, item) => total + this.getActualPrice(item), 0);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { LandingRoutingModule } from './landing.routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -10,7 +13,10 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     imports: [
         CommonModule,
         LandingRoutingModule,
-        MatButtonModule
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule
     ],
     exports: []
 })

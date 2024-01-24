@@ -15,14 +15,13 @@
             width: 4.5rem;
             height: 4.5rem;
             border-radius: 50%;
-            background-color: red;
         }
 
         .avatar-icons-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 44rem;
+            width: 4.4rem;
             cursor: pointer;
 
             .btn-section {
@@ -31,8 +30,8 @@
                 width: 50%;
             }
 
-            .spacer {
-                width: 20%;
+            .fill-btn {
+                margin-left: 20px;
             }
         }
     }

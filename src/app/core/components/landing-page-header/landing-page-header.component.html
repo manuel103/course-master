@@ -13,16 +13,17 @@
 
             <div class="menu" *ngIf="!isScreenSmall">
                 <nav class="menu-items">
-                    <a href="#">Courses</a>
-                    <a href="#">My Wish List</a>
-                    <a href="#">Cart</a>
+                    <a routerLink="/app/dashboard">Courses</a>
+                    <a routerLink="/app/wishlist">My Wish List</a>
+                    <a routerLink="/app/cart">Cart</a>
                 </nav>
             </div>
 
             <div class="buttons-section">
-                <button mat-raised-button class="transparent-btn" *ngIf="!isScreenSmall"
-                    routerLink="/app/dashboard">Login</button>
-                <button mat-raised-button class="fill-btn">Get Started</button>
+                <button mat-raised-button class="transparent-btn" *ngIf="!isScreenSmall && !isLoggedIn"
+                    routerLink="/">Login</button>
+                <button mat-raised-button routerLink="/app/dashboard" class="fill-btn" *ngIf="isLoggedIn">Get
+                    Started</button>
             </div>
         </div>
     </mat-toolbar>

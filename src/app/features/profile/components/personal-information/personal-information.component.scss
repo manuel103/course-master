@@ -11,53 +11,31 @@
     }
 
     .avatar-container {
-        .wrapper {
+        .avatar {
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 50%;
+            background-color: red;
+        }
+
+        .avatar-icons-container {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
-            flex-direction: column;
-
-            @media (min-width: 768px) {
-                flex-direction: row;
-                align-items: center;
-            }
-
-            .avatar {
-                font-size: 7rem;
-                width: 4.5rem;
-                height: 4.5rem;
-                border-radius: 50%;
-                border: 2px solid #263238;
-                background-color: #263238;
-                color: #fff;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .avatar-details-container {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 100%;
-
-                .spacer {
-                    width: 20%;
-                }
-
-                // @media (min-width: 768px) {
-                //     width: 12rem;
-                // }
-            }
+            width: 44rem;
+            cursor: pointer;
 
             .btn-section {
                 display: flex;
                 flex-direction: column;
                 width: 50%;
             }
+
+            .spacer {
+                width: 20%;
+            }
         }
     }
-
 
     .buttons-section {
         display: flex;
@@ -70,16 +48,29 @@
             flex-direction: row;
             width: 40%;
         }
+
+        .disabled-btn {
+            cursor: not-allowed;
+            pointer-events: all !important;
+            background-color: grey;
+        }
     }
 
-    .details-container {
-        display: grid;
-        grid-gap: 20px;
-        grid-template-columns: 1fr;
-        padding-top: 2rem;
+    .form-container {
+        margin-top: 2rem;
 
-        @media (min-width: 768px) {
-            grid-template-columns: 1fr 1fr;
+        .details-container {
+            display: grid;
+            grid-template-columns: 1fr;
+
+            @media (min-width: 768px) {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .error-msg {
+                font-size: 12px;
+            }
         }
     }
 }

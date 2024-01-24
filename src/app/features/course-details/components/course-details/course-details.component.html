@@ -26,13 +26,41 @@
                         Blandit libero volutpat sed cras ornare arcu dui
                         vivamus. Morbi blandit cursus risus at ultrices mi. Ultrices vitae auctor eu augue ut lectus
                         arcu bibendum. Eu ultrices vitae auctor eu augue ut lectus arcu. In massa tempor nec feugiat
-                        nisl pretium fusce id velit.
+                        nisl pretium fusce id velit.<br> <br>
+
+                        Morbi tristique senectus et netus et malesuada. Ultrices gravida dictum fusce ut placerat orci.
+                        Morbi blandit cursus risus at ultrices mi.
                     </p>
                 </div>
             </mat-card-content>
         </mat-card>
         <mat-card class="card">
             <mat-card-content>
+                <div class="sale-container" *ngIf="+(course.discountPercentage | removeSymbols) > 0">
+                    <div class="discount-container">
+                        <div class="info">
+                            <div class="discount-heading">Big Sale</div>
+                            <div class="discount-subheading">up to {{course.discountPercentage}} off !</div>
+                        </div>
+
+                        <div class="countdown-timer">
+                            <div class="group">
+                                <div class="value hours">{{ getTimeLeftForSale(course)?.hours }}</div>
+                                <div class="unit">Hrs</div>
+                            </div>
+                            <div class="group">
+                                <div class="value minutes">{{ getTimeLeftForSale(course)?.minutes }}</div>
+                                <div class="unit">Min</div>
+                            </div>
+
+                            <div class="group">
+                                <div class="value seconds">{{ getTimeLeftForSale(course)?.seconds }}</div>
+                                <div class="unit">Sec</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <iframe class="video-frame" [src]="videoUrl" height="315" frameborder="0" allowfullscreen></iframe>
                 <div class="price-section">
                     <div class="price-container">

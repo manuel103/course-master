@@ -26,6 +26,12 @@
             }
         }
 
+        .content-card {
+            border-radius: 1.3rem;
+            box-shadow: none;
+            width: 100%;
+        }
+
         .tabs {
             display: flex;
             flex-direction: row;

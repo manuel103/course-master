@@ -105,6 +105,60 @@
             .video-frame {
                 width: 100%;
             }
+
+            .sale-container {
+                .discount-container {
+                    display: flex;
+                    gap: 30px;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    background: #023047;
+                    background-image: radial-gradient(circle 610px at 5.2% 51%,
+                            rgb(5, 8, 114) 0%,
+                            rgb(7, 3, 53) 97%);
+                    color: #fff;
+                    padding: 8px 0;
+
+                    .discount-heading {
+                        font-size: 15px;
+                        font-weight: bold;
+                        margin-bottom: 4px;
+                    }
+
+                    .discount-subheading {
+                        font-size: 13px;
+                    }
+
+                    .countdown-timer {
+                        display: flex;
+                        gap: 16px;
+
+                        .group {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            gap: 6px;
+
+                            .value {
+                                background: #fff;
+                                color: #222;
+                                font-size: 17px;
+                                font-weight: bold;
+                                padding: 8px;
+                                min-width: 45px;
+                                text-align: center;
+                                border-radius: 4px;
+                            }
+
+                            .unit {
+                                font-size: 13px;
+                            }
+
+                        }
+                    }
+                }
+            }
         }
     }
 }

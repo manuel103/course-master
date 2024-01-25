@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CourseDetailsRoutingModule } from './course-details-routing.module';
-import { NgApexchartsModule } from 'ng-apexcharts';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,7 +18,6 @@ import { CartModule } from '../cart/cart.module';
     imports: [
         CommonModule,
         CourseDetailsRoutingModule,
-        NgApexchartsModule,
         MatCardModule,
         MatButtonModule,
         MatIconModule,

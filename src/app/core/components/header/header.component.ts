@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private drawerService: DrawerService,
     private renderer: Renderer2,
-    private el: ElementRef,
+    public el: ElementRef,
     private themeService: ThemeService,
     private cartService: CartService,
     private authService: AuthService

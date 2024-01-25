@@ -1,9 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-
-interface SideNavToggle {
-  screenWidth: number;
-  collapsed: boolean;
-}
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',

@@ -25,9 +25,9 @@ export class CartService {
     return this.dbService.getCart();
   }
 
-  private async loadInitialCartCount() {
+  public async loadInitialCartCount() {
     const cartItems = await this.dbService.getCart();
-    this.cartItemCount.next(cartItems.length);
+    this.cartItemCount.next(cartItems?.length);
   }
 
   async addToCart(course: any) {

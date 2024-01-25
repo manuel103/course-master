@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { AuthService } from '@app/core/services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorModalComponent } from '@app/shared/components/error-modal/error-modal.component';
 
@@ -18,7 +17,6 @@ export class HomePageComponent {
     private authService: AuthService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar,
     public dialog: MatDialog
   ) {
     this.loginForm = this.formBuilder.group({

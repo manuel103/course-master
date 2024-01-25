@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { accountsData } from '../../dashboard-data';
 import coursesData from '@app/db/data.json';
 import { MatPaginator } from '@angular/material/paginator';
@@ -21,14 +21,16 @@ export class DashboardComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  ngAfterViewInit() {
-    this.paginateData();
-  }
-
   constructor(
     private cartService: CartService,
-    private wishlistService: WishlistService
+    private wishlistService: WishlistService,
+    private cdr: ChangeDetectorRef
   ) { }
+
+  ngAfterViewInit() {
+    this.paginateData();
+    this.cdr.detectChanges();
+  }
 
   applyFilter() {
     const filterValue = this.searchTerm.toLowerCase();

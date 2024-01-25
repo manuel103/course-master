@@ -1,7 +1,7 @@
 <div class="sidenav"
     [ngClass]="{'sidenav-collapsed': isCollapsed(), 'hide-sidenav': isSmallScreen(), 'dark-background': isDarkTheme, 'light-background': !isDarkTheme }">
     <div class="logo-container">
-        <button class="logo">A</button>
+        <button class="logo">CM</button>
         <div [ngClass]="{'light-text': isDarkTheme, 'dark-text': !isDarkTheme }" class="logo-text" @fadeInOut
             routerLink="/app/dashboard">Course Master.</div>
         <button [ngClass]="{'light-text': isDarkTheme, 'dark-text': !isDarkTheme }" class="btn-close"

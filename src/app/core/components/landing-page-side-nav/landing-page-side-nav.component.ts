@@ -3,7 +3,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { fadeInOut, rotate } from '@app/core/utils/animations';
 import { DrawerService } from '@app/core/services/drawer.service';
 import { ThemeService } from '@app/core/services/theme.service';
-import { landingNavData } from '../sidenav/nav-data';
+import { landingNavData } from '../mobile-sidenav/nav-data';
 
 @Component({
   selector: 'app-landing-page-side-nav',

@@ -2,11 +2,6 @@
 @include btns;
 @include forms;
 
-.red-snackbar {
-    background-color: red;
-    color: #fff;
-}
-
 .main {
     @media (min-width: 768px) {
         margin-top: 100px;
@@ -53,6 +48,8 @@
                 padding: 0 50px;
                 height: 100%;
                 text-align: center;
+                padding-bottom: 2rem;
+                padding-top: 2rem;
             }
 
 

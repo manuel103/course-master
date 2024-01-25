@@ -14,6 +14,9 @@
         width: 100%;
 
         .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background: #4456ff;
             color: #fff;
             text-align: center;

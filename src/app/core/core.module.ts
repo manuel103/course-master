@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { BodyComponent } from './components/body/body.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -24,7 +23,6 @@ import { MatBadgeModule } from '@angular/material/badge';
 @NgModule({
     declarations: [
         BodyComponent,
-        SidenavComponent,
         HeaderComponent,
         MobileSidenavComponent,
         AuthenticatedLayoutComponent,
@@ -49,7 +47,6 @@ import { MatBadgeModule } from '@angular/material/badge';
     ],
     exports: [
         BodyComponent,
-        SidenavComponent,
         HeaderComponent,
         MobileSidenavComponent,
         LandingPageHeaderComponent

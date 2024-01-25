@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { navbarData } from '../sidenav/nav-data';
+import { navbarData } from './nav-data';
 import { MatDrawer } from '@angular/material/sidenav';
 import { fadeInOut, rotate } from '@app/core/utils/animations';
 import { DrawerService } from '@app/core/services/drawer.service';

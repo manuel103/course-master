@@ -6,33 +6,33 @@
             <mat-icon [ngClass]="{'light-text': isDarkTheme, 'dark-text': !isDarkTheme }">menu</mat-icon>
         </button>
         <div class="menu-items">
-            <div class="search-container" *ngIf="!isScreenSmall">
-                <form class="form">
-                    <mat-form-field class="search-input">
-                        <input type="text" matInput placeholder="Search">
-                        <i class="fal fa-search search-icon" aria-hidden="true"></i>
-                    </mat-form-field>
-                </form>
+            <div class="logo-container" *ngIf="!isScreenSmall">
+                <button class="logo">CM</button>
+                <div [ngClass]="{'light-text': isDarkTheme, 'dark-text': !isDarkTheme }" class="logo-text" @fadeInOut
+                    routerLink="/app/dashboard">Course Master.</div>
             </div>
 
             <div></div>
-            <div *ngIf="isScreenSmall">
-                <div class="logo-text" [ngClass]="{'light-text': isDarkTheme, 'dark-text': !isDarkTheme }" @fadeInOut
-                    routerLink="/app/dashboard">Course Master.</div>
-            </div>
             <div class="icons-container">
-                <!-- <mat-slide-toggle (change)="slideToggleChange($event)" *ngIf="!isScreenSmall"></mat-slide-toggle> -->
                 <i class="fal fa-moon-stars theme-icon" matRipple (click)="changeTheme('dark')"
-                    *ngIf="!isDarkTheme"></i>
-                <i class="fal fa-sun theme-icon-sun" matRipple (click)="changeTheme('light')" *ngIf="isDarkTheme"></i>
+                    *ngIf="!isDarkTheme && !isScreenSmall"></i>
+                <i class="fal fa-sun theme-icon-sun" matRipple (click)="changeTheme('light')"
+                    *ngIf="isDarkTheme && !isScreenSmall"></i>
 
                 <div class="header-menu" *ngIf="!isScreenSmall">
                     <nav class="menu-items">
-                        <a routerLink="/app/wishlist">My Wish List</a>
+                        <a routerLink="/app/dashboard" [ngClass]="isDarkTheme ? 'light-text' : 'dark-text' ">Courses</a>
                     </nav>
                 </div>
 
-                <button class="icon-btn" *ngIf="!isScreenSmall" [matMenuTriggerFor]="cartMenu">
+                <div class="header-menu" *ngIf="!isScreenSmall">
+                    <nav class="menu-items">
+                        <a routerLink="/app/wishlist" [ngClass]="isDarkTheme ? 'light-text' : 'dark-text' ">My
+                            Wishlist</a>
+                    </nav>
+                </div>
+
+                <button class="icon-btn" [matMenuTriggerFor]="cartMenu">
                     <i class="fal fa-shopping-cart header-icon" matBadge="{{cartItemCount}}"></i>
                 </button>
                 <div class="cart-menu">

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { LandingPageSections } from '../../landing-pages-data';
 import { AuthService } from '@app/core/services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorModalComponent } from '@app/shared/components/error-modal/error-modal.component';
 
 @Component({
   selector: 'app-home-page',
@@ -11,14 +12,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {
-  sectionContent = LandingPageSections;
   loginForm: FormGroup;
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {
     this.loginForm = this.formBuilder.group({
       username: [null, Validators.required],
@@ -37,10 +38,12 @@ export class HomePageComponent {
     if (this.authService.login(username, password)) {
       this.router.navigate(['/app/dashboard']);
     } else {
-      // alert('Invalid credentials');
-      this.snackBar.open('Invalid credentials', '', {
-        duration: 2000,
-        panelClass: ['red-snackbar']
+      this.dialog.open(ErrorModalComponent, {
+        width: '550px',
+        disableClose: true,
+        data: {
+          message: "Invalid credentials",
+        }
       });
     }
   }

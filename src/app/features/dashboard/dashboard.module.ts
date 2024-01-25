@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { NgApexchartsModule } from 'ng-apexcharts';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,7 +19,6 @@ import { CartModule } from '../cart/cart.module';
     imports: [
         CommonModule,
         DashboardRoutingModule,
-        NgApexchartsModule,
         MatCardModule,
         MatButtonModule,
         MatIconModule,

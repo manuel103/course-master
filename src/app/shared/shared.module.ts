@@ -8,11 +8,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { RemoveSymbolsPipe } from './pipes/remove-symbols.pipe';
 import { RoundUpPipe } from './pipes/round-up.pipe';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ErrorModalComponent } from './components/error-modal/error-modal.component';
 
 @NgModule({
   declarations: [
     RemoveSymbolsPipe,
-    RoundUpPipe
+    RoundUpPipe,
+    ErrorModalComponent
   ],
   imports: [
     MatTabsModule,
